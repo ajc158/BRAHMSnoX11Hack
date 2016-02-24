@@ -58,7 +58,6 @@ using namespace brahms;
 #include "os.h"
 #include "tfs.h"
 #include "info.h"
-#include "gui/gui.h"
 
 #ifdef __NIX__
 #include <string.h>
@@ -412,7 +411,7 @@ void inline freopen_local(const char* path, const char* mode, FILE* stream)
 #endif
 
 // Global pointer to the ExecuteGUI object.
-ExecuteGUI* executeGUI;
+//ExecuteGUI* executeGUI;
 
 EngineResult execute(int argc, char *argv[])
 {
@@ -423,7 +422,7 @@ EngineResult execute(int argc, char *argv[])
 	{
 		//	default args
 		createEngine.voiceIndex = VOICE_UNDEFINED;
-		createEngine.handler = MonitorEventHandlerFunc;
+		//createEngine.handler = MonitorEventHandlerFunc;
 		createEngine.logFormat = FMT_TEXT;
 
 		//	parse args (engine must exist)
@@ -432,7 +431,7 @@ EngineResult execute(int argc, char *argv[])
                 // Now the args have been interpreted, we can create
                 // the gui object if we need it.
                 if (instance.nogui == false) {
-                    executeGUI = new ExecuteGUI();
+                    //executeGUI = new ExecuteGUI();
                 } // else don't instanciate executeGUI
 
 		//	generate a segfault (for checking how it is handled by the executable and by the scripts)
@@ -577,7 +576,7 @@ const int RESULT_ERROR_INIITAL_PARSE = RESULT_ERROR + 1;
 int main(int argc, char *argv[])
 {
         // Init executeGUI:
-        executeGUI = (ExecuteGUI*)0;
+        //executeGUI = (ExecuteGUI*)0;
 
 	string exitFileText =
 			"<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>"
@@ -634,9 +633,9 @@ int main(int argc, char *argv[])
 			cout << engineResult.localError << endl;
 	}
 
-        if (executeGUI != (ExecuteGUI*)0) {
+        /*if (executeGUI != (ExecuteGUI*)0) {
             delete executeGUI;
-        }
+        }*/
 
 	//	return error/no-error code
 	return errorcode;

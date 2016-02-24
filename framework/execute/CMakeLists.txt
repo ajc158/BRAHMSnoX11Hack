@@ -10,8 +10,8 @@ endif(HAVE_CLOCK_GETTIME_IN_RT)
 
 if(APPLE)
   target_link_libraries(brahms-execute
-    brahms-engine brahms-engine-base brahms-gui
-    ${CMAKE_THREAD_LIBS_INIT} ${LIB_RT} ${XAW_LDFLAGS} ${XMU_LDFLAG} ${CMAKE_DL_LIBS}
+    brahms-engine brahms-engine-base
+    ${CMAKE_THREAD_LIBS_INIT} ${LIB_RT} ${CMAKE_DL_LIBS}
     )
 else()
   target_link_libraries(brahms-execute
@@ -48,6 +48,3 @@ install(TARGETS brahms-execute DESTINATION ${BIN_INSTALL_PATH})
 install(PROGRAMS brahms DESTINATION ${BIN_INSTALL_PATH})
 
 
-
-# The brahms-gui library lives in a subdirectory:
-add_subdirectory(gui)
